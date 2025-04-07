@@ -1,16 +1,47 @@
-import { defineConfig } from 'eslint/config';
-import globals from 'globals';
+import prettierConfig from 'eslint-config-prettier';
+import prettier from 'eslint-plugin-prettier';
 import js from '@eslint/js';
 
-export default defineConfig([
-  { files: ['**/*.{js,mjs,cjs}'] },
+export default [
   {
-    files: ['**/*.{js,mjs,cjs}'],
-    languageOptions: { globals: globals.browser },
+    ignores: [
+      'dist',
+      'node_modules',
+      '**/*.test.ts',
+      '**/*.config.js',
+      '**/*.config.ts',
+      '**/*.config.mjs',
+      '**/*.config.cjs',
+    ],
   },
+  js.configs.recommended,
+  prettierConfig,
   {
-    files: ['**/*.{js,mjs,cjs}'],
-    plugins: { js },
-    extends: ['js/recommended', 'plugin:node/recommended', 'prettier'],
+    languageOptions: {
+      ecmaVersion: 2018,
+      sourceType: 'commonjs',
+    },
+    plugins: {
+      prettier: prettier,
+    },
+
+    rules: {
+      'no-console': 'warn',
+      'no-undef': 'off',
+      semi: ['error', 'always'],
+      eqeqeq: 'warn',
+      'no-invalid-this': 'error',
+      'no-return-assign': 'error',
+      'no-useless-return': 'error',
+      'no-unused-vars': ['warn', { argsIgnorePattern: 'req|res|next' }],
+      indent: ['error', 2, { SwitchCase: 1 }],
+      quotes: ['error', 'single'],
+      'max-len': ['error', { code: 120 }],
+      'keyword-spacing': 'error',
+      'arrow-spacing': 'error',
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'prefer-template': 'warn',
+    },
   },
-]);
+];
