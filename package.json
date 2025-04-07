@@ -15,7 +15,7 @@
   "lint-staged": {
     "*.{js,ts}": [
       "eslint --cache --fix",
-      "prettier --cache --write"
+      "prettier --write"
     ]
   },
   "keywords": [],
