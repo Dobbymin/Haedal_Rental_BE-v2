@@ -1,12 +1,22 @@
 {
   "name": "practice_node",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
+    "lint": "./node_modules/.bin/eslint --cache .",
+    "format": "prettier --cache --write --check --ignore-path .prettierignore .",
+    "format:fix": "cat .gitignore .prettierignore > .mergedignore && prettier --write --ignore-path .mergedignore . && rm .mergedignore",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -20,7 +30,10 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.6",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3"
   }
