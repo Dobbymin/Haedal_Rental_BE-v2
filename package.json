@@ -13,7 +13,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix"
+    "*.{js,ts}": [
+      "eslint --cache --fix",
+      "prettier --cache --write"
+    ]
   },
   "keywords": [],
   "author": "",
