@@ -1,8 +1,8 @@
-import prettierConfig from 'eslint-config-prettier';
-import prettier from 'eslint-plugin-prettier';
-import js from '@eslint/js';
+const js = require('@eslint/js');
+const prettierConfig = require('eslint-config-prettier');
+const prettier = require('eslint-plugin-prettier');
 
-export default [
+module.exports = [
   {
     ignores: [
       'dist',
