@@ -1,8 +1,8 @@
-const js = require('@eslint/js');
-const prettierConfig = require('eslint-config-prettier');
-const prettier = require('eslint-plugin-prettier');
+import prettierConfig from 'eslint-config-prettier';
+import prettier from 'eslint-plugin-prettier';
+import js from '@eslint/js';
 
-module.exports = [
+export default [
   {
     ignores: [
       'dist',
@@ -18,8 +18,8 @@ module.exports = [
   prettierConfig,
   {
     languageOptions: {
-      ecmaVersion: 2018,
-      sourceType: 'commonjs',
+      ecmaVersion: 2020,
+      sourceType: 'module',
     },
     plugins: {
       prettier: prettier,
