@@ -12,6 +12,9 @@
     "format:fix": "cat .gitignore .prettierignore > .mergedignore && prettier --write --ignore-path .mergedignore . && rm .mergedignore",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
