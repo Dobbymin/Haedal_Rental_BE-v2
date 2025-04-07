@@ -1,6 +1,5 @@
 {
   "arrowParens": "always",
-  "bracketSameLine": false,
   "bracketSpacing": true,
   "endOfLine": "auto",
   "printWidth": 120,
