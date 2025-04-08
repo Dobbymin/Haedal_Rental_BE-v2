@@ -5,8 +5,9 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "dev": "nodemon --exec vite-node -r tsconfig-paths/register app.ts",
+    "dev": "nodemon --exec vite-node -r tsconfig-paths/register ./app.ts",
     "start": "node app.ts",
+    "build": "tsc -p . && tsc-alias",
     "lint": "./node_modules/.bin/eslint --cache .",
     "format": "prettier --cache --write --check --ignore-path .prettierignore .",
     "format:fix": "cat .gitignore .prettierignore > .mergedignore && prettier --write --ignore-path .mergedignore . && rm .mergedignore",
@@ -45,6 +46,7 @@
     "prettier": "^3.5.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+    "tsc-alias": "^1.8.13",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1",
