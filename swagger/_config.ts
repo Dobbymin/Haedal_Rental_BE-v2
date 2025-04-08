@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://3.37.221.110:8080/',
+        url: 'http://3.37.221.110/',
         description: 'Develop Server',
       },
       {
