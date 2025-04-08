@@ -11,16 +11,12 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:8080/',
+        url: 'http://3.34.134.24:8080/',
         description: 'Local Server',
       },
       {
-        url: 'http://test.co.kr/',
+        url: 'http://localhost:8080/',
         description: 'Test Server',
-      },
-      {
-        url: 'http://real.co.kr/',
-        description: 'Real Server',
       },
     ],
   },
