@@ -1,8 +1,10 @@
-import prettierConfig from 'eslint-config-prettier';
-import prettier from 'eslint-plugin-prettier';
 import js from '@eslint/js';
+import prettierConfig from 'eslint-config-prettier';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import prettier from 'eslint-plugin-prettier';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default tseslint.config(
   {
     ignores: [
       'dist',
@@ -14,8 +16,12 @@ export default [
       '**/*.config.cjs',
     ],
   },
-  js.configs.recommended,
-  prettierConfig,
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettierConfig],
+    // 적용 파일 패턴
+    files: ['**/*.ts'], // TypeScript 파일만 대상으로 설정
+  },
+
   {
     languageOptions: {
       ecmaVersion: 2020,
@@ -42,6 +48,39 @@ export default [
       'no-var': 'error',
       'prefer-const': 'error',
       'prefer-template': 'warn',
+      'import/order': [
+        'off',
+        {
+          'newlines-between': 'always', // import 사이에 한 줄 띄우기
+          alphabetize: { order: 'asc', caseInsensitive: true },
+          groups: ['builtin', 'external', 'internal', ['parent', 'sibling'], 'object', 'type'],
+          pathGroups: [
+            {
+              pattern: 'express',
+              group: 'external',
+              position: 'before',
+            },
+            {
+              pattern: '@/**',
+              group: 'internal',
+              position: 'after',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['builtin'],
+        },
+      ],
     },
-  },
-];
+
+    settings: {
+      'import/resolver': {
+        'import-x/resolver-next': [
+          createTypeScriptImportResolver({
+            alwaysTryTypes: true,
+            bun: true,
+            project: ['./tsconfig.json'], // tsconfig.json 위치 지정
+          }),
+        ],
+      },
+    },
+  }
+);

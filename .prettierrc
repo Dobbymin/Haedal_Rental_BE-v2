@@ -8,5 +8,17 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "useTabs": false
+  "useTabs": false,
+
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+
+  "importOrder": [
+    "^express(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(@types|apis|constants|docs|middlewares|routes|utils|views)$",
+    "^\\.\\.(?:/|$)",
+    "^\\.(?:/|$)"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
