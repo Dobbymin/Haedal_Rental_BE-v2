@@ -12,11 +12,11 @@ const options = {
     servers: [
       {
         url: 'http://3.34.134.24:8080/',
-        description: 'Local Server',
+        description: 'Develop Server',
       },
       {
         url: 'http://localhost:8080/',
-        description: 'Test Server',
+        description: 'Local Server',
       },
     ],
   },
