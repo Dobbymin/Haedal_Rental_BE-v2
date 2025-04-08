@@ -1,6 +1,6 @@
 import js from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import prettier from 'eslint-plugin-prettier';
 import tseslint from 'typescript-eslint';
 
@@ -17,13 +17,7 @@ export default tseslint.config(
     ],
   },
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      prettierConfig,
-      importPlugin.flatConfigs.recommended, // import 권장 규칙
-      importPlugin.flatConfigs.typescript, // TypeScript import 권장 규칙
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettierConfig],
     // 적용 파일 패턴
     files: ['**/*.ts'], // TypeScript 파일만 대상으로 설정
   },
@@ -33,7 +27,6 @@ export default tseslint.config(
       ecmaVersion: 2020,
       sourceType: 'module',
     },
-    parser: tseslint.ESLintParser,
     plugins: {
       prettier: prettier,
     },
@@ -80,14 +73,13 @@ export default tseslint.config(
 
     settings: {
       'import/resolver': {
-        node: {
-          extensions: ['.js', '.ts'],
-          moduleDirectory: ['node_modules', 'src/'],
-        },
-        typescript: {
-          alwaysTryTypes: true, // 타입스크립트 파일도 찾도록 설정
-          project: './tsconfig.json', // 프로젝트의 tsconfig.json을 사용
-        },
+        'import-x/resolver-next': [
+          createTypeScriptImportResolver({
+            alwaysTryTypes: true,
+            bun: true,
+            project: ['./tsconfig.json'], // tsconfig.json 위치 지정
+          }),
+        ],
       },
     },
   }
