@@ -5,7 +5,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "dev": "nodemon --exec vite-node app.ts",
+    "dev": "nodemon --exec vite-node -r tsconfig-paths/register app.ts",
     "start": "node app.ts",
     "lint": "./node_modules/.bin/eslint --cache .",
     "format": "prettier --cache --write --check --ignore-path .prettierignore .",
