@@ -1,10 +1,8 @@
-import { Router } from 'express';
+import { Express } from 'express';
 
-export const router = Router();
+import { handleUserCreate, handleUserLogin } from '../../apis';
 
-/**
- * @swagger
- * tags:
- *   name: Users
- *   description: 유저 추가 수정 삭제 조회
- */
+export const router = (app: Express) => {
+  app.post('/api/auth/signup', handleUserCreate);
+  app.post('/api/auth/login', handleUserLogin);
+};
