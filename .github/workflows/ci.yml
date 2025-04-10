@@ -1,4 +1,4 @@
-name: ESLint & Build Test
+name: lint test
 
 on:
   pull_request:

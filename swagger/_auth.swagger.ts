@@ -39,7 +39,15 @@
  *                 message:
  *                   type: string
  *                   example: "회원가입에 실패하였습니다."
- *
+ *       409:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "이미 등록된 사용자입니다."
  */
 
 /**
@@ -79,7 +87,15 @@
  *                 message:
  *                   type: string
  *                   example: "로그인에 실패하였습니다."
- *
+ *       404:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "아이디 또는 비밀번호가 잘못되었습니다."
  */
 
 /**
