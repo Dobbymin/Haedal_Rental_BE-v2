@@ -1,9 +1,11 @@
 import { Request, RequestHandler, Response } from 'express';
 
+import bcrypt from 'bcrypt';
+
 import { searchUser, users } from '../../../mock';
 
 // API 요청을 처리하는 함수
-export const handleUserCreate: RequestHandler = (req: Request, res: Response) => {
+export const handleUserCreate: RequestHandler = async (req: Request, res: Response) => {
   const { id, password, name, phoneNumber } = req.body;
 
   // user의 request를 통해 받은 id를 이용해 기존 유저 검색
@@ -14,13 +16,16 @@ export const handleUserCreate: RequestHandler = (req: Request, res: Response) =>
     res.status(409).send('이미 등록된 사용자 입니다.');
   }
 
+  // 임시 password 해싱
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   // 새로운 사용자 추가
   users.push({
     userId: users.length + 1,
     // TODO: 임시로 user로 설정
     role: 'user',
     id,
-    password,
+    password: hashedPassword,
     name,
     phoneNumber,
   });
