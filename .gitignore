@@ -24,5 +24,6 @@ dist
 *.env.development
 *.env.test
 *.env.production
+*.pem
 
 .eslintcache
