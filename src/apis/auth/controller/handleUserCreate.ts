@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response } from 'express';
 
-// import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 import { searchUser, users } from '../../../mock';
 
@@ -17,7 +17,7 @@ export const handleUserCreate: RequestHandler = async (req: Request, res: Respon
   }
 
   // 임시 password 해싱
-  // const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   // 새로운 사용자 추가
   users.push({
@@ -25,8 +25,7 @@ export const handleUserCreate: RequestHandler = async (req: Request, res: Respon
     // TODO: 임시로 user로 설정
     role: 'user',
     id,
-    // password: hashedPassword,
-    password,
+    password: hashedPassword,
     name,
     phoneNumber,
   });
