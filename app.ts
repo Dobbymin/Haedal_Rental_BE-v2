@@ -2,10 +2,11 @@ import express, { Express, Request, Response } from 'express';
 
 import cors from 'cors';
 import dotenv from 'dotenv';
-import path from 'path';
+
+// import path from 'path';
 
 import { router } from './src/routes';
-import { setupSwagger, specs, swaggerUi } from './swagger';
+import { setupSwagger } from './swagger';
 
 dotenv.config();
 
@@ -30,8 +31,8 @@ app.use(
 
 // swagger 설정
 // app.use('/swagger-ui', express.static('dist/swagger'));
-app.use('/swagger-ui', express.static(path.join(__dirname, './public/swagger-ui')));
-app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(specs));
+// app.use('/swagger-ui', express.static(path.join(__dirname, './public/swagger-ui')));
+// app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Swagger 설정 적용
 setupSwagger(app);

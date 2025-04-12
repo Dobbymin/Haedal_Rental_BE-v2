@@ -41,17 +41,17 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-export { specs, swaggerUi };
-
 export const setupSwagger = (app: Express) => {
-  // Serve swagger.json
-  app.get('/swagger-ui/swagger.json', (_, res) => {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+  // JSON 명세 보기용
+  app.get('/swagger.json', (_, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(specs);
   });
 
-  // Redirect /swagger-ui to the Swagger UI
-  app.get('/swagger-ui', (_, res) => {
-    res.redirect('/swagger-ui/');
-  });
+  // // Redirect /swagger-ui to the Swagger UI
+  // app.get('/swagger-ui', (_, res) => {
+  //   res.redirect('/swagger-ui/');
+  // });
 };
