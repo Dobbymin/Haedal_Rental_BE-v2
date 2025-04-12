@@ -1,3 +1,5 @@
+import { Express } from 'express';
+
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
@@ -11,12 +13,26 @@ const options = {
     },
     servers: [
       {
-        url: 'http://3.37.221.110/',
+        url: 'http://54.180.49.38/',
         description: 'Develop Server',
       },
       {
         url: 'http://localhost:8080/',
         description: 'Local Server',
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
       },
     ],
   },
@@ -25,4 +41,17 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-export { specs, swaggerUi };
+export const setupSwagger = (app: Express) => {
+  app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(specs));
+
+  // JSON 명세 보기용
+  app.get('/swagger.json', (_, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(specs);
+  });
+
+  // Redirect /swagger-ui to the Swagger UI
+  app.get('/swagger', (_, res) => {
+    res.redirect('/swagger-ui/');
+  });
+};

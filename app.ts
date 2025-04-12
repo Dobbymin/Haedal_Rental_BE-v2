@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import { router } from './src/routes';
-import { specs, swaggerUi } from './swagger';
+import { setupSwagger } from './swagger';
 
 dotenv.config();
 
@@ -22,14 +22,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     credentials: true,
-    // origin: process.env.CLIENT_URL || 'http://localhost:5173',
-    origin: ['http://localhost:5173', 'http://3.37.221.110'],
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
   })
 );
 
-// swagger 설정
-app.use('/api-docs', express.static('dist/swagger'));
-app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(specs));
+// Swagger 설정 적용
+setupSwagger(app);
 
 // 메인 페이지
 app.get('/', (_req: Request, res: Response) => {

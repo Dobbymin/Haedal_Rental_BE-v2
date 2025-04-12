@@ -9,6 +9,7 @@ export default tseslint.config(
     ignores: [
       'dist',
       'node_modules',
+      'public',
       '**/*.test.ts',
       '**/*.config.js',
       '**/*.config.ts',
