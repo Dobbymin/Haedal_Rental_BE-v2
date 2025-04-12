@@ -2,7 +2,7 @@
 ## 배포 주소
 server : http://3.37.221.110/
 
-swagger (api 명세서) : http://3.37.221.110/swagger-ui/
+swagger (api 명세서) : http://54.180.49.38/swagger-ui/
 
 ## Tech Spec
 Node.js, Express, Typescript, husky(git hook), swagger, ec2(ubuntu), pm2, nginx ...
