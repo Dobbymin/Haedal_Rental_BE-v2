@@ -14,6 +14,7 @@ export const handleUserCreate: RequestHandler = async (req: Request, res: Respon
   // 만약 id가 이미 존재하면 409 에러 반환
   if (user) {
     res.status(409).send('이미 등록된 사용자 입니다.');
+    return;
   }
 
   // 임시 password 해싱

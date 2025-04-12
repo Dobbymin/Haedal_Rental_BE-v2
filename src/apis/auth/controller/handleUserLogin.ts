@@ -13,6 +13,7 @@ export const handleUserLogin: RequestHandler = async (req: Request, res: Respons
   if (!user || !(await bcrypt.compare(password, user.password))) {
     // 아이디 또는 비밀번호가 DB에 없다면 404 Not Found
     res.status(404).send('아이디 또는 비밀번호가 잘못되었습니다.');
+    return;
   }
 
   const session = createSession(user.role);
