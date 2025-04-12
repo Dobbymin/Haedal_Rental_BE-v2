@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response } from 'express';
 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import { searchUser } from '../../../mock';
 import { createSession, generateAccessToken, generateRefreshToken } from '../service';

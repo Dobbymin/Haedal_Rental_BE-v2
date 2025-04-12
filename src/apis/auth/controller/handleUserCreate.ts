@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response } from 'express';
 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import { searchUser, users } from '../../../mock';
 
