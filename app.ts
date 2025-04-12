@@ -3,8 +3,6 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-// import path from 'path';
-
 import { router } from './src/routes';
 import { setupSwagger } from './swagger';
 
@@ -24,15 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     credentials: true,
-    // origin: process.env.CLIENT_URL || 'http://localhost:5173',
-    origin: ['http://localhost:5173', 'http://3.37.221.110'],
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
   })
 );
-
-// swagger 설정
-// app.use('/swagger-ui', express.static('dist/swagger'));
-// app.use('/swagger-ui', express.static(path.join(__dirname, './public/swagger-ui')));
-// app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Swagger 설정 적용
 setupSwagger(app);
