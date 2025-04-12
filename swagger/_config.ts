@@ -13,7 +13,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://3.37.221.110/',
+        url: 'http://54.180.49.38/',
         description: 'Develop Server',
       },
       {
@@ -42,7 +42,7 @@ const options = {
 const specs = swaggerJsdoc(options);
 
 export const setupSwagger = (app: Express) => {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+  app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(specs));
 
   // JSON 명세 보기용
   app.get('/swagger.json', (_, res) => {
@@ -50,8 +50,8 @@ export const setupSwagger = (app: Express) => {
     res.send(specs);
   });
 
-  // // Redirect /swagger-ui to the Swagger UI
-  // app.get('/swagger-ui', (_, res) => {
-  //   res.redirect('/swagger-ui/');
-  // });
+  // Redirect /swagger-ui to the Swagger UI
+  app.get('/swagger', (_, res) => {
+    res.redirect('/swagger-ui/');
+  });
 };
