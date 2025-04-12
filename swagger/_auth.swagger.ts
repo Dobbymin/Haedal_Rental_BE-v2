@@ -2,7 +2,7 @@
  * @swagger
  * /api/auth/signup:
  *   post:
- *     summary: 회원가입 [미구현]
+ *     summary: 회원가입 [임시]
  *     description: 회원정보를 입력하여 회원가입을 진행합니다.
  *     tags: [Auth - 회원 인증 API]
  *     requestBody:
@@ -54,7 +54,7 @@
  * @swagger
  * /api/auth/login:
  *   post:
- *     summary: 로그인 [미구현]
+ *     summary: 로그인 [임시]
  *     description: 아이디와 비밀번호를 입력하여 로그인을 진행합니다.
  *     tags: [Auth - 회원 인증 API]
  *     requestBody:
