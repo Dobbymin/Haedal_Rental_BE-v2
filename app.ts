@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 // cors 설정
 app.use(
   cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    //   credentials: true,
+    origin: ['http://haedal-rental.s3-website.ap-northeast-2.amazonaws.com', 'http://localhost:5173'],
   })
 );
 
