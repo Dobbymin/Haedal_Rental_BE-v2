@@ -42,6 +42,7 @@
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@vercel/node": "^5.1.14",
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-import-resolver-typescript": "^4.3.2",
